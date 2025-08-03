@@ -2,7 +2,6 @@ package com.example.sse_mcp_server_demo;
 
 import com.example.sse_mcp_server_demo.tool.DateTimeTools;
 import com.example.sse_mcp_server_demo.tool.MathTools;
-import com.example.sse_mcp_server_demo.tool.ProductService;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
 import org.springframework.boot.SpringApplication;
@@ -22,18 +21,21 @@ public class SseMcpServerDemoApplication {
 		return new RestTemplate();
 	}
 
+	/**
+	 * DateTimeTool
+	 * @return
+	 */
 	@Bean
 	public ToolCallbackProvider dateTimeTools() {
 		return MethodToolCallbackProvider.builder().toolObjects(new DateTimeTools()).build();
 	}
 
+	/**
+	 * MathTool
+	 * @return
+	 */
 	@Bean
 	public ToolCallbackProvider mathTools() {
 		return MethodToolCallbackProvider.builder().toolObjects(new MathTools()).build();
-	}
-
-	@Bean
-	public ToolCallbackProvider productTools() {
-		return MethodToolCallbackProvider.builder().toolObjects(new ProductService()).build();
 	}
 }
